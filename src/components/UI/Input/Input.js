@@ -7,9 +7,9 @@ function isInvalid({valid, touched, shouldValidate}) {
 
 const Input = props => {
 
-  const inputType = props.type || 'text'
-  const cls = [classes.Input]
-  const htmlFor = `${inputType}-${Math.random()}`
+  const inputType = props.type || 'text';
+  const cls = [classes.Input];
+  const htmlFor = `${inputType}-${Math.random()}`;
 
   if (isInvalid(props)) {
     cls.push(classes.invalid)
@@ -18,20 +18,21 @@ const Input = props => {
   return (
     <div className={cls.join(' ')}>
       <label htmlFor="pr">{props.label}</label>
-      <input 
-      type={inputType}
-      id={htmlFor}
-      value={props.value}
-      onChange={props.onChange}
+      <input
+        type={inputType}
+        id={htmlFor}
+        value={props.value}
+        onChange={props.onChange}
+        autoComplete="on"
       />
       {
         isInvalid(props)
-        ? <span>{props.errorMessage || 'Введите верное значение'}</span> 
-        : null
+          ? <span>{props.errorMessage || 'Введите верное значение'}</span>
+          : null
       }
-      
+
     </div>
   )
-}
+};
 
 export default Input
